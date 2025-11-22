@@ -287,23 +287,23 @@ function Home() {
                             className: "grid md:grid-cols-2 gap-8",
                             children: [
                                 {
-                                    title: "Residencia Contemporánea",
-                                    category: "Vivienda",
+                                    title: "Charly's Grilled Burger",
+                                    category: "Comercio",
                                     image: "/diseno-exterior-2.jpg"
                                 },
                                 {
-                                    title: "Centro Cultural",
-                                    category: "Institucional",
+                                    title: "Habitación Infantil",
+                                    category: "Habitación",
                                     image: "/diseno-exterior-3.jpg"
                                 },
                                 {
-                                    title: "Espacio Comercial",
-                                    category: "Comercio",
+                                    title: "Interior de sala",
+                                    category: "Comedor",
                                     image: "/diseno-exterior-4.jpg"
                                 },
                                 {
-                                    title: "Oficinas Sostenibles",
-                                    category: "Corporativo",
+                                    title: "Fachada Residencial",
+                                    category: "Fachada",
                                     image: "/diseno-exterior-5.jpg"
                                 }
                             ].map((project, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -386,19 +386,23 @@ function Home() {
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid md:grid-cols-3 gap-8",
+                            className: "grid md:grid-cols-4 gap-8",
                             children: [
                                 {
-                                    title: "Diseño Arquitectónico",
-                                    description: "Concepto y desarrollo de proyectos desde la idea inicial hasta la ejecución, considerando sostenibilidad y funcionalidad."
+                                    title: "Diseño arquitectónico",
+                                    description: "Desarrollo integral del concepto y la forma del edificio, equilibrando estética, funcionalidad y entorno desde la idea inicial hasta el anteproyecto."
                                 },
                                 {
-                                    title: "Planificación Urbana",
-                                    description: "Soluciones integrales para espacios públicos y privados que generan comunidades vibrantes y sostenibles."
+                                    title: "Diseño interior",
+                                    description: "Planificación y acondicionamiento de espacios internos, seleccionando materiales, iluminación y mobiliario para crear ambientes funcionales y estéticos."
                                 },
                                 {
-                                    title: "Restauración",
-                                    description: "Intervención sensitiva en edificios patrimoniales, respetando su historia mientras se adaptan a necesidades contemporáneas."
+                                    title: "Visualización 3D",
+                                    description: "Modelado digital tridimensional del proyecto que permite comprender la volumetría y el espacio antes de su ejecución física."
+                                },
+                                {
+                                    title: "Renders",
+                                    description: "Generación de imágenes fotorrealistas de alta calidad para visualizar el resultado final del proyecto con texturas, luces y sombras reales."
                                 }
                             ].map((service, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "p-8 rounded-lg bg-secondary border border-border hover:border-muted-foreground transition",
@@ -408,7 +412,7 @@ function Home() {
                                             children: service.title
                                         }, void 0, false, {
                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                            lineNumber: 163,
+                                            lineNumber: 164,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -416,13 +420,13 @@ function Home() {
                                             children: service.description
                                         }, void 0, false, {
                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                            lineNumber: 164,
+                                            lineNumber: 165,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 160,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
@@ -457,12 +461,12 @@ function Home() {
                                     className: "w-full h-full object-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                    lineNumber: 176,
+                                    lineNumber: 177,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                lineNumber: 175,
+                                lineNumber: 176,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -473,7 +477,7 @@ function Home() {
                                         children: "Sobre nosotros"
                                     }, void 0, false, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 179,
+                                        lineNumber: 180,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -481,7 +485,7 @@ function Home() {
                                         children: "Una visión clara del futuro"
                                     }, void 0, false, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 180,
+                                        lineNumber: 181,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -489,7 +493,7 @@ function Home() {
                                         children: "Estudio G fue fundado con la convicción de que la arquitectura debe ser una herramienta de transformación social. Nos especializamos en crear espacios que conectan a las personas con su entorno."
                                     }, void 0, false, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 183,
+                                        lineNumber: 184,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -497,29 +501,29 @@ function Home() {
                                         children: "Nuestro equipo multidisciplinario trabaja en colaboración con clientes, comunidades y especialistas para desarrollar proyectos que trascienden la estética y generan un impacto real en la calidad de vida."
                                     }, void 0, false, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 188,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                lineNumber: 178,
+                                lineNumber: 179,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                        lineNumber: 174,
+                        lineNumber: 175,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                    lineNumber: 173,
+                    lineNumber: 174,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                lineNumber: 172,
+                lineNumber: 173,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -533,7 +537,7 @@ function Home() {
                             children: "Hablemos"
                         }, void 0, false, {
                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                            lineNumber: 199,
+                            lineNumber: 200,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -541,7 +545,7 @@ function Home() {
                             children: "¿Listo para tu próximo proyecto?"
                         }, void 0, false, {
                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                            lineNumber: 200,
+                            lineNumber: 201,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -554,7 +558,7 @@ function Home() {
                                             children: "Contacto directo"
                                         }, void 0, false, {
                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                            lineNumber: 206,
+                                            lineNumber: 207,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -567,7 +571,7 @@ function Home() {
                                                             children: "Email"
                                                         }, void 0, false, {
                                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                            lineNumber: 209,
+                                                            lineNumber: 210,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -576,13 +580,13 @@ function Home() {
                                                             children: "estudiog.arquitectas@gmail.com"
                                                         }, void 0, false, {
                                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                            lineNumber: 210,
+                                                            lineNumber: 211,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 208,
+                                                    lineNumber: 209,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -592,7 +596,7 @@ function Home() {
                                                             children: "Teléfono 1"
                                                         }, void 0, false, {
                                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                            lineNumber: 215,
+                                                            lineNumber: 216,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -601,13 +605,13 @@ function Home() {
                                                             children: "+52 612 219 58 95"
                                                         }, void 0, false, {
                                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                            lineNumber: 216,
+                                                            lineNumber: 217,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 214,
+                                                    lineNumber: 215,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -617,7 +621,7 @@ function Home() {
                                                             children: "Teléfono 2"
                                                         }, void 0, false, {
                                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                            lineNumber: 221,
+                                                            lineNumber: 222,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -626,13 +630,13 @@ function Home() {
                                                             children: "+52 612 868 78 65"
                                                         }, void 0, false, {
                                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                            lineNumber: 222,
+                                                            lineNumber: 223,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 220,
+                                                    lineNumber: 221,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -642,33 +646,33 @@ function Home() {
                                                             children: "Ubicación"
                                                         }, void 0, false, {
                                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                            lineNumber: 227,
+                                                            lineNumber: 228,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "text-lg",
-                                                            children: "La Paz, México"
+                                                            children: "La Paz, Baja California Sur, México"
                                                         }, void 0, false, {
                                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                            lineNumber: 228,
+                                                            lineNumber: 229,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 226,
+                                                    lineNumber: 227,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                            lineNumber: 207,
+                                            lineNumber: 208,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                    lineNumber: 205,
+                                    lineNumber: 206,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -680,7 +684,7 @@ function Home() {
                                             className: "w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
                                         }, void 0, false, {
                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                            lineNumber: 234,
+                                            lineNumber: 235,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -689,7 +693,7 @@ function Home() {
                                             className: "w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
                                         }, void 0, false, {
                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                            lineNumber: 239,
+                                            lineNumber: 240,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -698,7 +702,7 @@ function Home() {
                                             className: "w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent resize-none"
                                         }, void 0, false, {
                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                            lineNumber: 244,
+                                            lineNumber: 245,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -706,30 +710,30 @@ function Home() {
                                             children: "Enviar mensaje"
                                         }, void 0, false, {
                                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                            lineNumber: 249,
+                                            lineNumber: 250,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                    lineNumber: 233,
+                                    lineNumber: 234,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                            lineNumber: 204,
+                            lineNumber: 205,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                    lineNumber: 198,
+                    lineNumber: 199,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                lineNumber: 197,
+                lineNumber: 198,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -745,7 +749,7 @@ function Home() {
                                         children: "ESTUDIO G"
                                     }, void 0, false, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 261,
+                                        lineNumber: 262,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -753,13 +757,13 @@ function Home() {
                                         children: "Arquitectura que transforma espacios y vidas."
                                     }, void 0, false, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 262,
+                                        lineNumber: 263,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                lineNumber: 260,
+                                lineNumber: 261,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -769,7 +773,7 @@ function Home() {
                                         children: "Enlaces"
                                     }, void 0, false, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 265,
+                                        lineNumber: 266,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -782,12 +786,12 @@ function Home() {
                                                     children: "Proyectos"
                                                 }, void 0, false, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 268,
+                                                    lineNumber: 269,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                lineNumber: 267,
+                                                lineNumber: 268,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -797,12 +801,12 @@ function Home() {
                                                     children: "Estudio"
                                                 }, void 0, false, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 273,
+                                                    lineNumber: 274,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                lineNumber: 272,
+                                                lineNumber: 273,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -812,24 +816,24 @@ function Home() {
                                                     children: "Servicios"
                                                 }, void 0, false, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 278,
+                                                    lineNumber: 279,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                lineNumber: 277,
+                                                lineNumber: 278,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 266,
+                                        lineNumber: 267,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                lineNumber: 264,
+                                lineNumber: 265,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -839,7 +843,7 @@ function Home() {
                                         children: "Redes"
                                     }, void 0, false, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 286,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -853,12 +857,12 @@ function Home() {
                                                     children: "Instagram"
                                                 }, void 0, false, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 288,
+                                                    lineNumber: 289,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                lineNumber: 287,
+                                                lineNumber: 288,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -869,30 +873,30 @@ function Home() {
                                                     children: "Facebook"
                                                 }, void 0, false, {
                                                     fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                    lineNumber: 293,
+                                                    lineNumber: 294,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                                lineNumber: 292,
+                                                lineNumber: 293,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                        lineNumber: 286,
+                                        lineNumber: 287,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                                lineNumber: 284,
+                                lineNumber: 285,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                        lineNumber: 259,
+                        lineNumber: 260,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -901,18 +905,18 @@ function Home() {
                             children: "© 2025 Estudio G. Todos los derechos reservados."
                         }, void 0, false, {
                             fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                            lineNumber: 301,
+                            lineNumber: 302,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                        lineNumber: 300,
+                        lineNumber: 301,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/elegant-portfolio-website/app/page.tsx",
-                lineNumber: 258,
+                lineNumber: 259,
                 columnNumber: 7
             }, this)
         ]

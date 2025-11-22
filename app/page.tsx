@@ -96,23 +96,23 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: "Residencia Contemporánea",
-                category: "Vivienda",
+                title: "Charly's Grilled Burger",
+                category: "Comercio",
                 image: "/diseno-exterior-2.jpg",
               },
               {
-                title: "Centro Cultural",
-                category: "Institucional",
+                title: "Habitación Infantil",
+                category: "Habitación",
                 image: "/diseno-exterior-3.jpg",
               },
               {
-                title: "Espacio Comercial",
-                category: "Comercio",
+                title: "Interior de sala",
+                category: "Comedor",
                 image: "/diseno-exterior-4.jpg",
               },
               {
-                title: "Oficinas Sostenibles",
-                category: "Corporativo",
+                title: "Fachada Residencial",
+                category: "Fachada",
                 image: "/diseno-exterior-5.jpg",
               },
             ].map((project, index) => (
@@ -138,23 +138,24 @@ export default function Home() {
           <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Lo que ofrecemos</p>
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-16 text-pretty">Nuestros servicios</h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             {[
               {
-                title: "Diseño Arquitectónico",
-                description:
-                  "Concepto y desarrollo de proyectos desde la idea inicial hasta la ejecución, considerando sostenibilidad y funcionalidad.",
+                title: "Diseño arquitectónico",
+                description: "Desarrollo integral del concepto y la forma del edificio, equilibrando estética, funcionalidad y entorno desde la idea inicial hasta el anteproyecto."
               },
               {
-                title: "Planificación Urbana",
-                description:
-                  "Soluciones integrales para espacios públicos y privados que generan comunidades vibrantes y sostenibles.",
+                title: "Diseño interior",
+                description: "Planificación y acondicionamiento de espacios internos, seleccionando materiales, iluminación y mobiliario para crear ambientes funcionales y estéticos."
               },
               {
-                title: "Restauración",
-                description:
-                  "Intervención sensitiva en edificios patrimoniales, respetando su historia mientras se adaptan a necesidades contemporáneas.",
+                title: "Visualización 3D",
+                description: "Modelado digital tridimensional del proyecto que permite comprender la volumetría y el espacio antes de su ejecución física."
               },
+              {
+                title: "Renders",
+                description: "Generación de imágenes fotorrealistas de alta calidad para visualizar el resultado final del proyecto con texturas, luces y sombras reales."
+              }
             ].map((service, index) => (
               <div
                 key={index}
@@ -225,7 +226,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Ubicación</p>
-                  <p className="text-lg">La Paz, México</p>
+                  <p className="text-lg">La Paz, Baja California Sur, México</p>
                 </div>
               </div>
             </div>
