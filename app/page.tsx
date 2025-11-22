@@ -9,22 +9,25 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
-      <nav className="fixed w-full top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
+      <nav className="fixed w-full top-0 z-50 bg-black/95 text-white backdrop-blur supports-[backdrop-filter]:bg-black/60 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-2xl font-serif font-semibold tracking-tight">ESTUDIO G</div>
+          <div className="flex items-center gap-2">
+            <div className="text-2xl font-serif font-semibold tracking-tight">ESTUDIO</div>
+            <img src="/logo2.png" alt="Logo" className="w-12 object-contain" />
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#projects" className="text-sm hover:text-muted-foreground transition">
+            <a href="#projects" className="text-sm hover:text-gray-300 transition">
               PROYECTOS
             </a>
-            <a href="#about" className="text-sm hover:text-muted-foreground transition">
+            <a href="#about" className="text-sm hover:text-gray-300 transition">
               ESTUDIO
             </a>
-            <a href="#services" className="text-sm hover:text-muted-foreground transition">
+            <a href="#services" className="text-sm hover:text-gray-300 transition">
               SERVICIOS
             </a>
-            <a href="#contact" className="text-sm hover:text-muted-foreground transition">
+            <a href="#contact" className="text-sm hover:text-gray-300 transition">
               CONTACTO
             </a>
           </div>
@@ -37,7 +40,7 @@ export default function Home() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-border">
+          <div className="md:hidden border-t border-white/10">
             <div className="flex flex-col gap-4 px-6 py-4">
               <a href="#projects" className="text-sm">
                 PROYECTOS
