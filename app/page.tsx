@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
-      <nav className="fixed w-full top-0 z-50 bg-black/95 text-white backdrop-blur supports-[backdrop-filter]:bg-black/60 border-b border-white/10">
+      <nav className="fixed w-full top-0 z-50 text-white backdrop-blur border-b border-white/10 bg-[oklch(0.25_0.08_50_/_0.9)] supports-[backdrop-filter]:bg-[oklch(0.25_0.08_50_/_0.6)]">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="text-2xl font-serif font-semibold tracking-tight">ESTUDIO</div>
@@ -40,7 +40,7 @@ export default function Home() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-white/10">
+          <div className="md:hidden border-t border-white/10 bg-accent">
             <div className="flex flex-col gap-4 px-6 py-4">
               <a href="#projects" className="text-sm">
                 PROYECTOS
@@ -141,11 +141,15 @@ export default function Home() {
           <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Lo que ofrecemos</p>
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-16 text-pretty">Nuestros servicios</h2>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 title: "Diseño arquitectónico",
                 description: "Desarrollo integral del concepto y la forma del edificio, equilibrando estética, funcionalidad y entorno desde la idea inicial hasta el anteproyecto."
+              },
+              {
+                title: "Proyecto ejecutivo",
+                description: "Elaboración del conjunto completo de planos técnicos, detalles constructivos y especificaciones necesarias para la correcta construcción de la obra."
               },
               {
                 title: "Diseño interior",
@@ -158,6 +162,10 @@ export default function Home() {
               {
                 title: "Renders",
                 description: "Generación de imágenes fotorrealistas de alta calidad para visualizar el resultado final del proyecto con texturas, luces y sombras reales."
+              },
+              {
+                title: "Presupuestos",
+                description: "Estimación detallada de costos, materiales y tiempos de ejecución para asegurar la viabilidad financiera y el control económico de la obra."
               }
             ].map((service, index) => (
               <div

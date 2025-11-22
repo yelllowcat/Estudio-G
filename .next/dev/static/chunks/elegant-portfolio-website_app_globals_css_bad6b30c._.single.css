@@ -1020,28 +1020,8 @@
     width: calc(var(--spacing) * 9);
   }
 
-  .w-10 {
-    width: calc(var(--spacing) * 10);
-  }
-
   .w-12 {
     width: calc(var(--spacing) * 12);
-  }
-
-  .w-16 {
-    width: calc(var(--spacing) * 16);
-  }
-
-  .w-24 {
-    width: calc(var(--spacing) * 24);
-  }
-
-  .w-30 {
-    width: calc(var(--spacing) * 30);
-  }
-
-  .w-50 {
-    width: calc(var(--spacing) * 50);
   }
 
   .w-64 {
@@ -1627,22 +1607,17 @@
     background-color: var(--color-bg);
   }
 
+  .bg-\[oklch\(0\.25_0\.08_50_\/_0\.9\)\] {
+    background-color: #3b1500e6;
+    background-color: lab(12.4511% 21.0394 21.8987 / .9);
+  }
+
   .bg-accent {
     background-color: var(--accent);
   }
 
   .bg-background {
     background-color: var(--background);
-  }
-
-  .bg-background\/95 {
-    background-color: var(--background);
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-background\/95 {
-      background-color: color-mix(in oklab, var(--background) 95%, transparent);
-    }
   }
 
   .bg-black\/50 {
@@ -1652,16 +1627,6 @@
   @supports (color: color-mix(in lab, red, red)) {
     .bg-black\/50 {
       background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
-    }
-  }
-
-  .bg-black\/95 {
-    background-color: #000000f2;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-black\/95 {
-      background-color: color-mix(in oklab, var(--color-black) 95%, transparent);
     }
   }
 
@@ -4135,32 +4100,9 @@
   }
 
   @supports ((-webkit-backdrop-filter: var(--tw)) or (backdrop-filter: var(--tw))) {
-    .supports-\[backdrop-filter\]\:bg-background\/60 {
-      background-color: var(--background);
-    }
-
-    @supports (color: color-mix(in lab, red, red)) {
-      .supports-\[backdrop-filter\]\:bg-background\/60 {
-        background-color: color-mix(in oklab, var(--background) 60%, transparent);
-      }
-    }
-  }
-
-  @supports ((-webkit-backdrop-filter: var(--tw)) or (backdrop-filter: var(--tw))) {
-    .supports-\[backdrop-filter\]\:bg-black\/60 {
-      background-color: #0009;
-    }
-
-    @supports (color: color-mix(in lab, red, red)) {
-      .supports-\[backdrop-filter\]\:bg-black\/60 {
-        background-color: color-mix(in oklab, var(--color-black) 60%, transparent);
-      }
-    }
-  }
-
-  @supports ((-webkit-backdrop-filter: var(--tw)) or (backdrop-filter: var(--tw))) {
-    .supports-\[backdrop-filter\]\:bg-primary {
-      background-color: var(--primary);
+    .supports-\[backdrop-filter\]\:bg-\[oklch\(0\.25_0\.08_50_\/_0\.6\)\] {
+      background-color: #3b150099;
+      background-color: lab(12.4511% 21.0394 21.8987 / .6);
     }
   }
 
