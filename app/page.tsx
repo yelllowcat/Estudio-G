@@ -69,8 +69,8 @@ export default function Home() {
                 Espacios que transforman vidas
               </h1>
               <p className="text-lg text-muted-foreground mb-8 font-light leading-relaxed">
-                En Estudio G, creamos arquitectura que respeta el entorno y mejora la experiencia humana. Cada proyecto
-                es una conversación entre diseño, función y belleza.
+                En Estudio G creamos arquitectura e interiorismo con intención.
+                Diseñamos espacios funcionales, estéticos y hechos a tu medida, desde el concepto hasta los acabados.
               </p>
               <a href="#projects">
                 <button className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 hover:bg-accent/90 transition">
