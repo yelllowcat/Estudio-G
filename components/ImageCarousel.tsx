@@ -16,6 +16,10 @@ interface ImageCarouselProps {
 export default function ImageCarousel({ images, autoPlayInterval = 5000 }: ImageCarouselProps) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+    const [touchStart, setTouchStart] = useState(0)
+    const [touchEnd, setTouchEnd] = useState(0)
+
+    const minSwipeDistance = 50
 
     const goToNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
@@ -42,11 +46,40 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
     const handleMouseEnter = () => setIsAutoPlaying(false)
     const handleMouseLeave = () => setIsAutoPlaying(true)
 
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(0)
+        setTouchStart(e.targetTouches[0].clientX)
+        setIsAutoPlaying(false)
+    }
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX)
+    }
+
+    const handleTouchEnd = () => {
+        if (!touchStart || !touchEnd) return
+
+        const distance = touchStart - touchEnd
+        const isLeftSwipe = distance > minSwipeDistance
+        const isRightSwipe = distance < -minSwipeDistance
+
+        if (isLeftSwipe) {
+            goToNext()
+        } else if (isRightSwipe) {
+            goToPrevious()
+        }
+
+        setTimeout(() => setIsAutoPlaying(true), 3000)
+    }
+
     return (
         <div
             className="relative w-full group"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
         >
             <div className="relative h-[500px] md:h-[600px] rounded-lg overflow-hidden bg-muted">
                 {images.map((item, index) => (

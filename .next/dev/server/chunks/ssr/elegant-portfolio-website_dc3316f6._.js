@@ -17,6 +17,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$webs
 function ImageCarousel({ images, autoPlayInterval = 5000 }) {
     const [currentIndex, setCurrentIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
     const [isAutoPlaying, setIsAutoPlaying] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [touchStart, setTouchStart] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [touchEnd, setTouchEnd] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const minSwipeDistance = 50;
     const goToNext = ()=>{
         setCurrentIndex((prevIndex)=>(prevIndex + 1) % images.length);
     };
@@ -37,10 +40,33 @@ function ImageCarousel({ images, autoPlayInterval = 5000 }) {
     ]);
     const handleMouseEnter = ()=>setIsAutoPlaying(false);
     const handleMouseLeave = ()=>setIsAutoPlaying(true);
+    const handleTouchStart = (e)=>{
+        setTouchEnd(0);
+        setTouchStart(e.targetTouches[0].clientX);
+        setIsAutoPlaying(false);
+    };
+    const handleTouchMove = (e)=>{
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+    const handleTouchEnd = ()=>{
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+        if (isLeftSwipe) {
+            goToNext();
+        } else if (isRightSwipe) {
+            goToPrevious();
+        }
+        setTimeout(()=>setIsAutoPlaying(true), 3000);
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "relative w-full group",
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
+        onTouchStart: handleTouchStart,
+        onTouchMove: handleTouchMove,
+        onTouchEnd: handleTouchEnd,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "relative h-[500px] md:h-[600px] rounded-lg overflow-hidden bg-muted",
@@ -53,14 +79,14 @@ function ImageCarousel({ images, autoPlayInterval = 5000 }) {
                                 className: "w-full h-full object-cover"
                             }, void 0, false, {
                                 fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                                lineNumber: 60,
+                                lineNumber: 93,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
                             }, void 0, false, {
                                 fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                                lineNumber: 65,
+                                lineNumber: 98,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -70,23 +96,23 @@ function ImageCarousel({ images, autoPlayInterval = 5000 }) {
                                     children: item.title
                                 }, void 0, false, {
                                     fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 101,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                                lineNumber: 67,
+                                lineNumber: 100,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, index, true, {
                         fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                        lineNumber: 53,
+                        lineNumber: 86,
                         columnNumber: 21
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                lineNumber: 51,
+                lineNumber: 84,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -97,12 +123,12 @@ function ImageCarousel({ images, autoPlayInterval = 5000 }) {
                     size: 24
                 }, void 0, false, {
                     fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                    lineNumber: 79,
+                    lineNumber: 112,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                lineNumber: 74,
+                lineNumber: 107,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -113,12 +139,12 @@ function ImageCarousel({ images, autoPlayInterval = 5000 }) {
                     size: 24
                 }, void 0, false, {
                     fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                    lineNumber: 86,
+                    lineNumber: 119,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                lineNumber: 81,
+                lineNumber: 114,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -129,12 +155,12 @@ function ImageCarousel({ images, autoPlayInterval = 5000 }) {
                         "aria-label": `Go to slide ${index + 1}`
                     }, index, false, {
                         fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                        lineNumber: 91,
+                        lineNumber: 124,
                         columnNumber: 21
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                lineNumber: 89,
+                lineNumber: 122,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$elegant$2d$portfolio$2d$website$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -146,13 +172,13 @@ function ImageCarousel({ images, autoPlayInterval = 5000 }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-                lineNumber: 103,
+                lineNumber: 136,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/elegant-portfolio-website/components/ImageCarousel.tsx",
-        lineNumber: 46,
+        lineNumber: 76,
         columnNumber: 9
     }, this);
 }
