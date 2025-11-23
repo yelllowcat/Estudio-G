@@ -2,6 +2,7 @@
 
 import { Menu, X, ArrowRight } from "lucide-react"
 import { useState } from "react"
+import ImageCarousel from "@/components/ImageCarousel"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -81,7 +82,7 @@ export default function Home() {
             </div>
             <div className="h-96 md:h-full min-h-96 rounded-lg overflow-hidden bg-muted">
               <img
-                src="/disenoExterior.jpg"
+                src="/charly-exterior.jpg"
                 alt="Estudio G - Proyecto arquitectónico"
                 className="w-full h-full object-cover"
               />
@@ -92,46 +93,78 @@ export default function Home() {
 
       {/* Projects Section */}
       <section id="projects" className="py-20 md:py-32 px-6 bg-secondary">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto grid flex gap-16 items-center">
           <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Nuestro trabajo</p>
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-16 text-pretty">Proyectos destacados</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
+          <ImageCarousel
+            images={[
               {
                 title: "Charly's Grilled Burger",
-                category: "Comercio",
-                image: "/diseno-exterior-2.jpg",
+                image: "/charly-exterior.jpg",
               },
               {
-                title: "Habitación Infantil",
-                category: "Habitación",
-                image: "/diseno-exterior-3.jpg",
+                title: "Charly's Grilled Burger",
+                image: "/charly-exterior-2.jpg",
+              },
+
+            ]}
+            autoPlayInterval={5000}
+          />
+
+          <ImageCarousel
+            images={[
+              {
+                title: "Interior Infantil",
+                image: "/interior-rosa-1.jpg",
               },
               {
-                title: "Interior de sala",
-                category: "Comedor",
-                image: "/diseno-exterior-4.jpg",
+                title: "Interior Infantil",
+                image: "/interior-rosa-2.jpg",
               },
               {
-                title: "Fachada Residencial",
-                category: "Fachada",
-                image: "/diseno-exterior-5.jpg",
+                title: "Interior Infantil",
+                image: "/interior-infantil-1.jpg",
               },
-            ].map((project, index) => (
-              <div key={index} className="group cursor-pointer">
-                <div className="h-64 md:h-72 rounded-lg overflow-hidden bg-muted mb-4">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                  />
-                </div>
-                <p className="text-sm text-muted-foreground mb-2">{project.category}</p>
-                <h3 className="text-xl font-serif font-light">{project.title}</h3>
-              </div>
-            ))}
-          </div>
+
+            ]}
+            autoPlayInterval={5000}
+          />
+          <ImageCarousel
+            images={[
+              {
+                title: "Interior Moderno",
+                image: "/interior-moderno-1.jpg",
+              },
+              {
+                title: "Interior Moderno",
+                image: "/interior-moderno-2.jpg",
+              },
+              {
+                title: "Interior Moderno",
+                image: "/comedor.jpg",
+              },
+              {
+                title: "Interior Moderno",
+                image: "/fregadero.jpg",
+              },
+
+            ]}
+            autoPlayInterval={5000}
+          />
+          <ImageCarousel
+            images={[
+              {
+                title: "Happy Baggles",
+                image: "/happy-baggles-1.jpg",
+              },
+              {
+                title: "Happy Baggles",
+                image: "/happy-baggles-2.jpg",
+              },
+
+            ]}
+            autoPlayInterval={5000}
+          />
         </div>
       </section>
 
