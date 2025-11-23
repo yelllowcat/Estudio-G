@@ -29,6 +29,30 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    url: "https://estudiog.com",
+    siteName: "Estudio G",
+    title: "Estudio G - Arquitectura Contemporánea",
+    description:
+      "Creamos espacios que transforman vidas. Arquitectura contemporánea, diseño sostenible y proyectos innovadores.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Estudio G - Arquitectura Contemporánea",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Estudio G - Arquitectura Contemporánea",
+    description:
+      "Creamos espacios que transforman vidas. Arquitectura contemporánea, diseño sostenible y proyectos innovadores.",
+    images: ["/og-image.jpg"],
+  },
 }
 
 export default function RootLayout({
