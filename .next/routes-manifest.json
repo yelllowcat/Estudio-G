@@ -38,6 +38,12 @@
       "regex": "^/_not\\-found(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/opengraph-image.jpg",
+      "regex": "^/opengraph\\-image\\.jpg(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/opengraph\\-image\\.jpg(?:/)?$"
     }
   ],
   "dataRoutes": [],

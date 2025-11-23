@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   title: "Estudio G - Arquitectura Contemporánea",
   description:
     "Creamos espacios que transforman vidas. Arquitectura contemporánea, diseño sostenible y proyectos innovadores.",
-  generator: "v0.app",
   icons: {
     icon: [
       {
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_MX",
-    url: "https://estudiog.com",
+    url: "https://estudio-g.vercel.app",
     siteName: "Estudio G",
     title: "Estudio G - Arquitectura Contemporánea",
     description:
