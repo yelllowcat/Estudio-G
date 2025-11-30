@@ -109,8 +109,10 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects" className="py-20 md:py-32 px-6 bg-secondary">
         <div className="max-w-7xl mx-auto grid flex gap-16 items-center">
-          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Nuestro trabajo</p>
-          <h2 className="text-4xl md:text-5xl font-serif font-light mb-16 text-pretty">Proyectos destacados</h2>
+          <div>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Nuestro trabajo</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-light text-pretty">Proyectos destacados</h2>
+          </div>
           <ImageCarousel
             images={[
               {
