@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react"
 import { useState, useEffect } from "react"
 
 interface CarouselImage {
@@ -18,6 +18,7 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
     const [isAutoPlaying, setIsAutoPlaying] = useState(true)
     const [touchStart, setTouchStart] = useState(0)
     const [touchEnd, setTouchEnd] = useState(0)
+    const [isFullScreen, setIsFullScreen] = useState(false)
 
     const minSwipeDistance = 50
 
@@ -72,6 +73,26 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
         setTimeout(() => setIsAutoPlaying(true), 3000)
     }
 
+    const openFullScreen = () => {
+        setIsFullScreen(true)
+        setIsAutoPlaying(false)
+    }
+
+    const closeFullScreen = () => {
+        setIsFullScreen(false)
+        setIsAutoPlaying(true)
+    }
+
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === "Escape" && isFullScreen) {
+                closeFullScreen()
+            }
+        }
+        window.addEventListener("keydown", handleEsc)
+        return () => window.removeEventListener("keydown", handleEsc)
+    }, [isFullScreen])
+
     return (
         <div
             className="relative w-full group"
@@ -93,11 +114,16 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
                         <img
                             src={item.image || "/placeholder.svg"}
                             alt={item.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+                            onClick={openFullScreen}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
-                        <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                        <div className="absolute top-4 left-4 bg-black/30 backdrop-blur text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            <Maximize2 size={20} />
+                        </div>
+
+                        <div className="absolute bottom-0 left-0 right-0 p-8 text-white pointer-events-none">
                             <h3 className="text-3xl md:text-4xl font-serif font-light">{item.title}</h3>
                         </div>
                     </div>
@@ -136,6 +162,71 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
             <div className="absolute top-4 right-4 bg-black/30 backdrop-blur text-white px-3 py-1 rounded-full text-sm font-light">
                 {currentIndex + 1} / {images.length}
             </div>
+
+            {/* Fullscreen Modal */}
+            {isFullScreen && (
+                <div
+                    className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300"
+                    onClick={closeFullScreen}
+                >
+                    <button
+                        onClick={closeFullScreen}
+                        className="absolute top-4 right-4 bg-white/10 backdrop-blur text-white p-3 rounded-full hover:bg-white/20 transition z-10"
+                        aria-label="Close fullscreen"
+                    >
+                        <X size={24} />
+                    </button>
+
+                    <div
+                        className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center animate-in zoom-in-95 duration-300"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <img
+                            src={images[currentIndex].image}
+                            alt={images[currentIndex].title}
+                            className="max-w-full max-h-full object-contain rounded-lg"
+                        />
+
+                        {/* Navigation in fullscreen */}
+                        {images.length > 1 && (
+                            <>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        goToPrevious()
+                                    }}
+                                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur text-white p-4 rounded-full hover:bg-white/20 transition"
+                                    aria-label="Previous image"
+                                >
+                                    <ChevronLeft size={28} />
+                                </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        goToNext()
+                                    }}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur text-white p-4 rounded-full hover:bg-white/20 transition"
+                                    aria-label="Next image"
+                                >
+                                    <ChevronRight size={28} />
+                                </button>
+                            </>
+                        )}
+
+                        {/* Title and counter in fullscreen */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+                            <div className="flex items-center justify-between max-w-7xl mx-auto">
+                                <h3 className="text-2xl md:text-3xl font-serif font-light">
+                                    {images[currentIndex].title}
+                                </h3>
+                                <span className="text-sm bg-white/10 backdrop-blur px-3 py-1 rounded-full">
+                                    {currentIndex + 1} / {images.length}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

@@ -1,11 +1,22 @@
 "use client"
 
-import { Menu, X, ArrowRight } from "lucide-react"
-import { useState } from "react"
+import { Menu, X, ArrowRight, Maximize2 } from "lucide-react"
+import { useState, useEffect } from "react"
 import ImageCarousel from "@/components/ImageCarousel"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isHeroImageFullScreen, setIsHeroImageFullScreen] = useState(false)
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isHeroImageFullScreen) {
+        setIsHeroImageFullScreen(false)
+      }
+    }
+    window.addEventListener("keydown", handleEsc)
+    return () => window.removeEventListener("keydown", handleEsc)
+  }, [isHeroImageFullScreen])
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -80,12 +91,16 @@ export default function Home() {
                 </button>
               </a>
             </div>
-            <div className="h-96 md:h-full min-h-96 rounded-lg overflow-hidden bg-muted">
+            <div className="h-96 md:h-full min-h-96 rounded-lg overflow-hidden bg-muted relative group cursor-pointer">
               <img
                 src="/charly-exterior.jpg"
                 alt="Estudio G - Proyecto arquitectónico"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                onClick={() => setIsHeroImageFullScreen(true)}
               />
+              <div className="absolute top-4 right-4 bg-black/30 backdrop-blur text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <Maximize2 size={20} />
+              </div>
             </div>
           </div>
         </div>
@@ -346,6 +361,33 @@ export default function Home() {
           <p>&copy; 2025 Estudio G. Todos los derechos reservados.</p>
         </div>
       </footer>
+
+      {/* Hero Image Fullscreen Modal */}
+      {isHeroImageFullScreen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300"
+          onClick={() => setIsHeroImageFullScreen(false)}
+        >
+          <button
+            onClick={() => setIsHeroImageFullScreen(false)}
+            className="absolute top-4 right-4 bg-white/10 backdrop-blur text-white p-3 rounded-full hover:bg-white/20 transition z-10"
+            aria-label="Close fullscreen"
+          >
+            <X size={24} />
+          </button>
+
+          <div
+            className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center animate-in zoom-in-95 duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src="/charly-exterior.jpg"
+              alt="Estudio G - Proyecto arquitectónico"
+              className="max-w-full max-h-full object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
