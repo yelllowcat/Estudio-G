@@ -1,12 +1,34 @@
 "use client"
 
 import { Menu, X, ArrowRight, Maximize2 } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import ImageCarousel from "@/components/ImageCarousel"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isHeroImageFullScreen, setIsHeroImageFullScreen] = useState(false)
+
+  // Scroll animation setup
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement
+            element.classList.add("animate-in", "fade-in", "slide-in-from-bottom-4")
+            element.style.animationDuration = "0.6s"
+            element.style.animationFillMode = "both"
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    const elements = document.querySelectorAll(".animate-on-scroll")
+    elements.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -25,45 +47,66 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="text-2xl font-serif font-semibold tracking-tight">ESTUDIO</div>
-            <img src="/logo2.png" alt="Logo" className="w-12 object-contain" />
+            <img src="/logo2.png" alt="Estudio G Logo" className="w-12 object-contain" />
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#projects" className="text-sm hover:text-gray-300 transition">
+            <a href="#projects" className="text-sm hover:text-gray-300 transition-colors duration-200">
               PROYECTOS
             </a>
-            <a href="#about" className="text-sm hover:text-gray-300 transition">
+            <a href="#about" className="text-sm hover:text-gray-300 transition-colors duration-200">
               ESTUDIO
             </a>
-            <a href="#services" className="text-sm hover:text-gray-300 transition">
+            <a href="#services" className="text-sm hover:text-gray-300 transition-colors duration-200">
               SERVICIOS
             </a>
-            <a href="#contact" className="text-sm hover:text-gray-300 transition">
+            <a href="#contact" className="text-sm hover:text-gray-300 transition-colors duration-200">
               CONTACTO
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 hover:bg-white/10 rounded transition-colors duration-200"
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isMenuOpen}
+          >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-white/10 bg-accent">
+          <div className="md:hidden border-t border-white/10 bg-accent animate-in slide-in-from-top duration-300">
             <div className="flex flex-col gap-4 px-6 py-4">
-              <a href="#projects" className="text-sm">
+              <a
+                href="#projects"
+                className="text-sm py-2 hover:text-gray-300 transition-colors duration-200 min-h-[44px] flex items-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 PROYECTOS
               </a>
-              <a href="#about" className="text-sm">
+              <a
+                href="#about"
+                className="text-sm py-2 hover:text-gray-300 transition-colors duration-200 min-h-[44px] flex items-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 ESTUDIO
               </a>
-              <a href="#services" className="text-sm">
+              <a
+                href="#services"
+                className="text-sm py-2 hover:text-gray-300 transition-colors duration-200 min-h-[44px] flex items-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 SERVICIOS
               </a>
-              <a href="#contact" className="text-sm">
+              <a
+                href="#contact"
+                className="text-sm py-2 hover:text-gray-300 transition-colors duration-200 min-h-[44px] flex items-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 CONTACTO
               </a>
             </div>
@@ -75,9 +118,9 @@ export default function Home() {
       <section className="pt-32 pb-20 px-6 md:pt-40 md:pb-32">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="animate-on-scroll">
               <p className="text-sm text-muted-foreground mb-4 uppercase tracking-wider">Arquitectura contemporánea</p>
-              <h1 className="text-5xl md:text-6xl font-serif font-light leading-tight mb-6 text-pretty">
+              <h1 className="font-serif font-light leading-tight mb-6 text-pretty">
                 Espacios que transforman vidas
               </h1>
               <p className="text-lg text-muted-foreground mb-8 font-light leading-relaxed">
@@ -85,7 +128,7 @@ export default function Home() {
                 Diseñamos espacios funcionales, estéticos y hechos a tu medida, desde el concepto hasta los acabados.
               </p>
               <a href="#projects">
-                <button className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 hover:bg-accent/90 transition">
+                <button className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 hover:bg-accent/90 hover:shadow-lg transition-all duration-200 cursor-pointer">
                   Ver proyectos
                   <ArrowRight size={18} />
                 </button>
@@ -109,9 +152,9 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects" className="py-20 md:py-32 px-6 bg-secondary">
         <div className="max-w-7xl mx-auto grid flex gap-16 items-center">
-          <div>
+          <div className="animate-on-scroll">
             <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Nuestro trabajo</p>
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-pretty">Proyectos destacados</h2>
+            <h2 className="font-serif font-light text-pretty">Proyectos destacados</h2>
           </div>
           <ImageCarousel
             images={[
@@ -188,8 +231,10 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="py-20 md:py-32 px-6 bg-background">
         <div className="max-w-7xl mx-auto">
-          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Lo que ofrecemos</p>
-          <h2 className="text-4xl md:text-5xl font-serif font-light mb-16 text-pretty">Nuestros servicios</h2>
+          <div className="animate-on-scroll">
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Lo que ofrecemos</p>
+            <h2 className="font-serif font-light mb-16 text-pretty">Nuestros servicios</h2>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -220,7 +265,7 @@ export default function Home() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="p-8 rounded-lg bg-secondary border border-border hover:border-muted-foreground transition"
+                className="animate-on-scroll p-8 rounded-lg bg-secondary border border-border hover:border-muted-foreground hover:shadow-lg transition-all duration-300 cursor-default"
               >
                 <h3 className="text-xl font-serif font-light mb-4">{service.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
@@ -234,12 +279,17 @@ export default function Home() {
       <section id="about" className="py-20 md:py-32 px-6 bg-secondary">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="h-96 md:h-full min-h-96 rounded-lg overflow-hidden bg-muted order-2 md:order-1">
-              <img src="/about.jpg" alt="Equipo del Estudio G" className="w-full h-full object-cover" />
+            <div className="h-96 md:h-full min-h-96 rounded-lg overflow-hidden bg-muted order-2 md:order-1 animate-on-scroll">
+              <img
+                src="/about.jpg"
+                alt="Equipo del Estudio G"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
-            <div className="order-1 md:order-2">
+            <div className="order-1 md:order-2 animate-on-scroll">
               <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">Sobre nosotros</p>
-              <h2 className="text-4xl md:text-5xl font-serif font-light mb-6 text-pretty">
+              <h2 className="font-serif font-light mb-6 text-pretty">
                 Una visión clara del futuro
               </h2>
               <p className="text-muted-foreground mb-4 leading-relaxed">
@@ -258,30 +308,41 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-20 md:py-32 px-6 bg-background">
         <div className="max-w-4xl mx-auto">
-          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4 text-center">Hablemos</p>
-          <h2 className="text-4xl md:text-5xl font-serif font-light mb-12 text-center text-pretty">
-            ¿Listo para tu próximo proyecto?
-          </h2>
+          <div className="animate-on-scroll">
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4 text-center">Hablemos</p>
+            <h2 className="font-serif font-light mb-12 text-center text-pretty">
+              ¿Listo para tu próximo proyecto?
+            </h2>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-12">
-            <div>
+            <div className="animate-on-scroll">
               <h3 className="font-serif text-lg mb-6">Contacto directo</h3>
               <div className="space-y-4">
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Email</p>
-                  <a href="mailto:estudiog.arquitectas@gmail.com" className="text-lg hover:text-muted-foreground transition">
+                  <a
+                    href="mailto:estudiog.arquitectas@gmail.com"
+                    className="text-lg hover:text-muted-foreground transition-colors duration-200"
+                  >
                     estudiog.arquitectas@gmail.com
                   </a>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Teléfono 1</p>
-                  <a href="tel:+526122195895" className="text-lg hover:text-muted-foreground transition">
+                  <a
+                    href="tel:+526122195895"
+                    className="text-lg hover:text-muted-foreground transition-colors duration-200"
+                  >
                     +52 612 219 58 95
                   </a>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Teléfono 2</p>
-                  <a href="tel:+526128687865" className="text-lg hover:text-muted-foreground transition">
+                  <a
+                    href="tel:+526128687865"
+                    className="text-lg hover:text-muted-foreground transition-colors duration-200"
+                  >
                     +52 612 868 78 65
                   </a>
                 </div>
@@ -292,23 +353,41 @@ export default function Home() {
               </div>
             </div>
 
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="Tu nombre"
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
-              />
-              <input
-                type="email"
-                placeholder="Tu email"
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
-              />
-              <textarea
-                placeholder="Tu mensaje"
-                rows={4}
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent resize-none"
-              />
-              <button className="w-full bg-accent text-accent-foreground py-3 rounded-lg hover:bg-accent/90 transition font-medium">
+            <form className="space-y-4 animate-on-scroll">
+              <div>
+                <label htmlFor="contact-name" className="sr-only">Tu nombre</label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  placeholder="Tu nombre"
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-shadow duration-200"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="contact-email" className="sr-only">Tu email</label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  placeholder="Tu email"
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-shadow duration-200"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="contact-message" className="sr-only">Tu mensaje</label>
+                <textarea
+                  id="contact-message"
+                  placeholder="Tu mensaje"
+                  rows={4}
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent resize-none transition-shadow duration-200"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-accent text-accent-foreground py-3 rounded-lg hover:bg-accent/90 hover:shadow-lg transition-all duration-200 font-medium cursor-pointer"
+              >
                 Enviar mensaje
               </button>
             </form>
@@ -327,17 +406,17 @@ export default function Home() {
             <h4 className="font-medium text-sm mb-4 uppercase tracking-wider">Enlaces</h4>
             <ul className="space-y-2 text-sm opacity-70">
               <li>
-                <a href="#projects" className="hover:opacity-100 transition">
+                <a href="#projects" className="hover:opacity-100 transition-opacity duration-200">
                   Proyectos
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:opacity-100 transition">
+                <a href="#about" className="hover:opacity-100 transition-opacity duration-200">
                   Estudio
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:opacity-100 transition">
+                <a href="#services" className="hover:opacity-100 transition-opacity duration-200">
                   Servicios
                 </a>
               </li>
@@ -347,12 +426,22 @@ export default function Home() {
             <h4 className="font-medium text-sm mb-4 uppercase tracking-wider">Redes</h4>
             <ul className="space-y-2 text-sm opacity-70">
               <li>
-                <a href="https://www.instagram.com/arqestudio.g/" className="hover:opacity-100 transition" target="_blank">
+                <a
+                  href="https://www.instagram.com/arqestudio.g/"
+                  className="hover:opacity-100 transition-opacity duration-200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="https://www.facebook.com/102249694476940" className="hover:opacity-100 transition" target="_blank">
+                <a
+                  href="https://www.facebook.com/102249694476940"
+                  className="hover:opacity-100 transition-opacity duration-200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Facebook
                 </a>
               </li>
