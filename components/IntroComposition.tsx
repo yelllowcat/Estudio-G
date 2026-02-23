@@ -11,9 +11,37 @@ import {
     staticFile,
 } from "remotion";
 
+// Helper to calculate unified scale logic using the original 1920x1080 baseline
+const useResponsiveScale = () => {
+    const { width, height } = useVideoConfig();
+    // Using 0.08 of width or 0.1 of height, capped at the original font size of 72.
+    // This perfectly preserves the original 1920x1080 layout ratio while scaling down uniformly
+    // on both narrow and short screens, preventing overlapping elements.
+    const baseSize = Math.min(width * 0.08, height * 0.1, 72);
+
+    return {
+        baseSize,
+        // Proportions derived directly from original fixed layout (e.g. fontSize was 72)
+        // Increased padding/margin to prevent the text and logo from overlapping
+        paddingBottom: baseSize * 1.5,
+        marginTop: baseSize * 1.2,
+        logoSize: baseSize * 1.666,
+        taglinePaddingTop: baseSize * 2.5,
+        diagonalLineMax: baseSize * 4.16, // originally 300 (300/72 = 4.16)
+        letterSpacingMax: baseSize * 0.194, // originally 14 (14/72 = 0.194)
+        translateYOffset: baseSize * 0.833, // originally 60 (60/72 = 0.833)
+        taglineWidths: {
+            base: baseSize * 0.222, // originally 16
+            dot: baseSize * 0.277, // originally 20
+            gap: baseSize * 0.166, // originally 12
+            ls: baseSize * 0.055, // originally 4
+        }
+    };
+};
+
 export const IntroComposition: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps, width, height } = useVideoConfig();
+    const { fps } = useVideoConfig();
 
     // === BACKGROUND ===
     const bgOpacity = interpolate(frame, [0, 0.5 * fps], [0, 1], {
@@ -81,7 +109,8 @@ export const IntroComposition: React.FC = () => {
 
 const ArchitecturalLines: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps, width } = useVideoConfig();
+    const { fps } = useVideoConfig();
+    const { diagonalLineMax } = useResponsiveScale();
 
     const lineProgress = spring({
         frame,
@@ -142,13 +171,13 @@ const ArchitecturalLines: React.FC = () => {
                     transformOrigin: "center bottom",
                 }}
             />
-            {/* Diagonal accent — relative to viewport width */}
+            {/* Diagonal accent */}
             <div
                 style={{
                     position: "absolute",
                     top: "50%",
                     left: "50%",
-                    width: `${lineProgress * width * 0.2}px`,
+                    width: `${lineProgress * diagonalLineMax}px`,
                     height: 1,
                     backgroundColor: "rgba(200, 160, 120, 0.12)",
                     transform: "translate(-50%, -50%) rotate(45deg)",
@@ -163,7 +192,8 @@ const ArchitecturalLines: React.FC = () => {
 
 const StudioName: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps, width, height } = useVideoConfig();
+    const { fps } = useVideoConfig();
+    const { baseSize, paddingBottom, translateYOffset, letterSpacingMax } = useResponsiveScale();
 
     const entrance = spring({
         frame,
@@ -171,22 +201,17 @@ const StudioName: React.FC = () => {
         config: { damping: 15, stiffness: 80, mass: 1.2 },
     });
 
-    const translateY = interpolate(entrance, [0, 1], [height * 0.04, 0]);
+    const translateY = interpolate(entrance, [0, 1], [translateYOffset, 0]);
     const opacity = interpolate(entrance, [0, 1], [0, 1]);
 
-    // Letter spacing — scales with viewport
-    const maxLetterSpacing = Math.min(width * 0.012, 14);
-    const letterSpacing = interpolate(entrance, [0, 1], [maxLetterSpacing * 2.2, maxLetterSpacing]);
-
-    // Font size — responsive, capped at 72
-    const fontSize = Math.min(width * 0.06, 72);
+    const letterSpacing = interpolate(entrance, [0, 1], [letterSpacingMax * 2.2, letterSpacingMax]);
 
     return (
         <AbsoluteFill
             style={{
                 justifyContent: "center",
                 alignItems: "center",
-                paddingBottom: height * 0.06,
+                paddingBottom,
             }}
         >
             <div
@@ -195,7 +220,7 @@ const StudioName: React.FC = () => {
                     opacity,
                     fontFamily:
                         "'Georgia', 'Times New Roman', 'Playfair Display', serif",
-                    fontSize,
+                    fontSize: baseSize,
                     fontWeight: 300,
                     color: "#f5ebe0",
                     letterSpacing: `${letterSpacing}px`,
@@ -212,7 +237,8 @@ const StudioName: React.FC = () => {
 
 const LogoReveal: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps, width, height } = useVideoConfig();
+    const { fps } = useVideoConfig();
+    const { logoSize, marginTop } = useResponsiveScale();
 
     const scaleSpring = spring({
         frame,
@@ -222,9 +248,6 @@ const LogoReveal: React.FC = () => {
 
     const scale = interpolate(scaleSpring, [0, 1], [0.7, 1]);
     const opacity = interpolate(scaleSpring, [0, 1], [0, 1]);
-
-    // Logo size — responsive, capped at 120
-    const logoSize = Math.min(width * 0.15, 120);
 
     return (
         <AbsoluteFill
@@ -242,7 +265,7 @@ const LogoReveal: React.FC = () => {
                     transform: `scale(${scale})`,
                     opacity,
                     filter: "brightness(1.3) contrast(0.9)",
-                    marginTop: height * 0.03,
+                    marginTop,
                 }}
             />
         </AbsoluteFill>
@@ -253,22 +276,17 @@ const LogoReveal: React.FC = () => {
 
 const Tagline: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps, width, height } = useVideoConfig();
+    const { fps } = useVideoConfig();
+    const { taglinePaddingTop, taglineWidths } = useResponsiveScale();
 
     const words = ["Arquitectura", "·", "Interiorismo", "·", "Diseño"];
-
-    // Responsive sizes
-    const baseFontSize = Math.min(width * 0.025, 16);
-    const dotFontSize = Math.min(width * 0.03, 20);
-    const gap = Math.min(width * 0.015, 12);
-    const ls = Math.min(width * 0.005, 4);
 
     return (
         <AbsoluteFill
             style={{
                 justifyContent: "center",
                 alignItems: "center",
-                paddingTop: height * 0.15,
+                paddingTop: taglinePaddingTop,
             }}
         >
             <div
@@ -276,7 +294,7 @@ const Tagline: React.FC = () => {
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "center",
-                    gap,
+                    gap: taglineWidths.gap,
                     alignItems: "center",
                     padding: "0 5%",
                 }}
@@ -289,7 +307,8 @@ const Tagline: React.FC = () => {
                         config: { damping: 200 },
                     });
                     const opacity = interpolate(wordSpring, [0, 1], [0, 1]);
-                    const translateY = interpolate(wordSpring, [0, 1], [15, 0]);
+                    const maxTranslateY = taglineWidths.base * 0.9;
+                    const translateY = interpolate(wordSpring, [0, 1], [maxTranslateY, 0]);
 
                     return (
                         <span
@@ -297,10 +316,10 @@ const Tagline: React.FC = () => {
                             style={{
                                 fontFamily:
                                     "'Georgia', 'Times New Roman', 'Playfair Display', serif",
-                                fontSize: word === "·" ? dotFontSize : baseFontSize,
+                                fontSize: word === "·" ? taglineWidths.dot : taglineWidths.base,
                                 fontWeight: 300,
                                 color: "rgba(200, 180, 160, 0.9)",
-                                letterSpacing: ls,
+                                letterSpacing: taglineWidths.ls,
                                 textTransform: "uppercase",
                                 opacity,
                                 transform: `translateY(${translateY}px)`,
