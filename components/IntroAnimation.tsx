@@ -11,6 +11,18 @@ export default function IntroAnimation() {
     const [isVisible, setIsVisible] = useState(true);
     const [isFadingOut, setIsFadingOut] = useState(false);
     const [playerRef, setPlayerRef] = useState<PlayerRef | null>(null);
+    const [dimensions, setDimensions] = useState<{
+        width: number;
+        height: number;
+    } | null>(null);
+
+    // Capture viewport dimensions on mount
+    useEffect(() => {
+        setDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight,
+        });
+    }, []);
 
     const handlePlayerRef = useCallback((ref: PlayerRef | null) => {
         if (ref) {
@@ -38,7 +50,7 @@ export default function IntroAnimation() {
         };
     }, [playerRef]);
 
-    if (!isVisible) return null;
+    if (!isVisible || !dimensions) return null;
 
     return (
         <div
@@ -58,8 +70,8 @@ export default function IntroAnimation() {
                 component={IntroComposition}
                 inputProps={{}}
                 durationInFrames={DURATION_IN_FRAMES}
-                compositionWidth={1920}
-                compositionHeight={1080}
+                compositionWidth={dimensions.width}
+                compositionHeight={dimensions.height}
                 fps={FPS}
                 style={{
                     width: "100%",

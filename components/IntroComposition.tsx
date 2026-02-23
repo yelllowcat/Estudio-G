@@ -81,7 +81,7 @@ export const IntroComposition: React.FC = () => {
 
 const ArchitecturalLines: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps } = useVideoConfig();
+    const { fps, width } = useVideoConfig();
 
     const lineProgress = spring({
         frame,
@@ -142,13 +142,13 @@ const ArchitecturalLines: React.FC = () => {
                     transformOrigin: "center bottom",
                 }}
             />
-            {/* Diagonal accent */}
+            {/* Diagonal accent — relative to viewport width */}
             <div
                 style={{
                     position: "absolute",
                     top: "50%",
                     left: "50%",
-                    width: `${lineProgress * 300}px`,
+                    width: `${lineProgress * width * 0.2}px`,
                     height: 1,
                     backgroundColor: "rgba(200, 160, 120, 0.12)",
                     transform: "translate(-50%, -50%) rotate(45deg)",
@@ -163,7 +163,7 @@ const ArchitecturalLines: React.FC = () => {
 
 const StudioName: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps } = useVideoConfig();
+    const { fps, width, height } = useVideoConfig();
 
     const entrance = spring({
         frame,
@@ -171,18 +171,22 @@ const StudioName: React.FC = () => {
         config: { damping: 15, stiffness: 80, mass: 1.2 },
     });
 
-    const translateY = interpolate(entrance, [0, 1], [60, 0]);
+    const translateY = interpolate(entrance, [0, 1], [height * 0.04, 0]);
     const opacity = interpolate(entrance, [0, 1], [0, 1]);
 
-    // Letter spacing animation
-    const letterSpacing = interpolate(entrance, [0, 1], [30, 14]);
+    // Letter spacing — scales with viewport
+    const maxLetterSpacing = Math.min(width * 0.012, 14);
+    const letterSpacing = interpolate(entrance, [0, 1], [maxLetterSpacing * 2.2, maxLetterSpacing]);
+
+    // Font size — responsive, capped at 72
+    const fontSize = Math.min(width * 0.06, 72);
 
     return (
         <AbsoluteFill
             style={{
                 justifyContent: "center",
                 alignItems: "center",
-                paddingBottom: 80,
+                paddingBottom: height * 0.06,
             }}
         >
             <div
@@ -191,7 +195,7 @@ const StudioName: React.FC = () => {
                     opacity,
                     fontFamily:
                         "'Georgia', 'Times New Roman', 'Playfair Display', serif",
-                    fontSize: 72,
+                    fontSize,
                     fontWeight: 300,
                     color: "#f5ebe0",
                     letterSpacing: `${letterSpacing}px`,
@@ -208,7 +212,7 @@ const StudioName: React.FC = () => {
 
 const LogoReveal: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps } = useVideoConfig();
+    const { fps, width, height } = useVideoConfig();
 
     const scaleSpring = spring({
         frame,
@@ -218,6 +222,9 @@ const LogoReveal: React.FC = () => {
 
     const scale = interpolate(scaleSpring, [0, 1], [0.7, 1]);
     const opacity = interpolate(scaleSpring, [0, 1], [0, 1]);
+
+    // Logo size — responsive, capped at 120
+    const logoSize = Math.min(width * 0.15, 120);
 
     return (
         <AbsoluteFill
@@ -229,13 +236,13 @@ const LogoReveal: React.FC = () => {
             <Img
                 src={staticFile("logo2.png")}
                 style={{
-                    width: 120,
-                    height: 120,
+                    width: logoSize,
+                    height: logoSize,
                     objectFit: "contain",
                     transform: `scale(${scale})`,
                     opacity,
                     filter: "brightness(1.3) contrast(0.9)",
-                    marginTop: 40,
+                    marginTop: height * 0.03,
                 }}
             />
         </AbsoluteFill>
@@ -246,23 +253,32 @@ const LogoReveal: React.FC = () => {
 
 const Tagline: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps } = useVideoConfig();
+    const { fps, width, height } = useVideoConfig();
 
     const words = ["Arquitectura", "·", "Interiorismo", "·", "Diseño"];
+
+    // Responsive sizes
+    const baseFontSize = Math.min(width * 0.025, 16);
+    const dotFontSize = Math.min(width * 0.03, 20);
+    const gap = Math.min(width * 0.015, 12);
+    const ls = Math.min(width * 0.005, 4);
 
     return (
         <AbsoluteFill
             style={{
                 justifyContent: "center",
                 alignItems: "center",
-                paddingTop: 180,
+                paddingTop: height * 0.15,
             }}
         >
             <div
                 style={{
                     display: "flex",
-                    gap: 12,
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap,
                     alignItems: "center",
+                    padding: "0 5%",
                 }}
             >
                 {words.map((word, i) => {
@@ -281,13 +297,14 @@ const Tagline: React.FC = () => {
                             style={{
                                 fontFamily:
                                     "'Georgia', 'Times New Roman', 'Playfair Display', serif",
-                                fontSize: word === "·" ? 20 : 16,
+                                fontSize: word === "·" ? dotFontSize : baseFontSize,
                                 fontWeight: 300,
                                 color: "rgba(200, 180, 160, 0.9)",
-                                letterSpacing: 4,
+                                letterSpacing: ls,
                                 textTransform: "uppercase",
                                 opacity,
                                 transform: `translateY(${translateY}px)`,
+                                whiteSpace: "nowrap",
                             }}
                         >
                             {word}
