@@ -2,7 +2,12 @@
 
 import { Menu, X, ArrowRight, Maximize2 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
+import dynamic from "next/dynamic"
 import ImageCarousel from "@/components/ImageCarousel"
+
+const IntroAnimation = dynamic(() => import("@/components/IntroAnimation"), {
+  ssr: false,
+})
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -42,6 +47,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Intro Animation */}
+      <IntroAnimation />
+
       {/* Navigation */}
       <nav className="fixed w-full top-0 z-50 text-white backdrop-blur border-b border-white/10 bg-[oklch(0.25_0.08_50_/_0.9)] supports-[backdrop-filter]:bg-[oklch(0.25_0.08_50_/_0.6)]">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
