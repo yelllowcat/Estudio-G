@@ -16,12 +16,19 @@ export default function IntroAnimation() {
         height: number;
     } | null>(null);
 
-    // Capture viewport dimensions on mount
+    // Capture viewport dimensions and handle resize
     useEffect(() => {
-        setDimensions({
-            width: window.innerWidth,
-            height: window.innerHeight,
-        });
+        const updateDimensions = () => {
+            setDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        updateDimensions();
+        
+        window.addEventListener("resize", updateDimensions);
+        return () => window.removeEventListener("resize", updateDimensions);
     }, []);
 
     const handlePlayerRef = useCallback((ref: PlayerRef | null) => {

@@ -14,27 +14,28 @@ import {
 // Helper to calculate unified scale logic using the original 1920x1080 baseline
 const useResponsiveScale = () => {
     const { width, height } = useVideoConfig();
-    // Using 0.08 of width or 0.1 of height, capped at the original font size of 72.
-    // This perfectly preserves the original 1920x1080 layout ratio while scaling down uniformly
-    // on both narrow and short screens, preventing overlapping elements.
-    const baseSize = Math.min(width * 0.08, height * 0.1, 72);
+    const isMobile = width < 768;
+    // Mobile text should be larger, but scaled dynamically with width.
+    const baseScaleFactor = isMobile ? 0.12 : 0.08;
+    const baseSize = Math.min(width * baseScaleFactor, height * 0.12, 80);
 
     return {
         baseSize,
         // Proportions derived directly from original fixed layout (e.g. fontSize was 72)
-        // Increased padding/margin to prevent the text and logo from overlapping
-        paddingBottom: baseSize * 1.5,
-        marginTop: baseSize * 1.2,
-        logoSize: baseSize * 1.666,
-        taglinePaddingTop: baseSize * 2.5,
-        diagonalLineMax: baseSize * 4.16, // originally 300 (300/72 = 4.16)
-        letterSpacingMax: baseSize * 0.194, // originally 14 (14/72 = 0.194)
-        translateYOffset: baseSize * 0.833, // originally 60 (60/72 = 0.833)
+        // Adjust vertical spacing so the elements don't crash into each other when stacked
+        paddingBottom: baseSize * (isMobile ? 1.2 : 1.5),
+        marginTop: baseSize * (isMobile ? 0.8 : 0.9), // Move desktop logo slightly up
+        logoSize: baseSize * (isMobile ? 1.1 : 1.5), // Slightly reduce max desktop logo size
+        taglinePaddingTop: baseSize * (isMobile ? 3.5 : 2.8), // Move desktop tagline slightly down
+        diagonalLineMax: baseSize * 4.16,
+        letterSpacingMax: baseSize * (isMobile ? 0.08 : 0.194),
+        translateYOffset: baseSize * 0.833,
         taglineWidths: {
-            base: baseSize * 0.222, // originally 16
-            dot: baseSize * 0.277, // originally 20
-            gap: baseSize * 0.166, // originally 12
-            ls: baseSize * 0.055, // originally 4
+            base: baseSize * (isMobile ? 0.25 : 0.222),
+            dot: baseSize * (isMobile ? 0 : 0.277),
+            // Tightly pack the stacked tagline
+            gap: baseSize * (isMobile ? 0.05 : 0.166),
+            ls: baseSize * (isMobile ? 0.1 : 0.055),
         }
     };
 };
@@ -109,8 +110,9 @@ export const IntroComposition: React.FC = () => {
 
 const ArchitecturalLines: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps } = useVideoConfig();
+    const { fps, width } = useVideoConfig();
     const { diagonalLineMax } = useResponsiveScale();
+    const isMobile = width < 768;
 
     const lineProgress = spring({
         frame,
@@ -121,6 +123,13 @@ const ArchitecturalLines: React.FC = () => {
 
     const lineColor = "rgba(200, 160, 120, 0.25)";
 
+    const hLineStart = isMobile ? "2%" : "10%";
+    const hLineWidth = isMobile ? 96 : 80;
+    
+    const vLineStart = isMobile ? "5%" : "20%";
+    const vLineHeight = isMobile ? 85 : 70;
+    const vLineTop = isMobile ? "7.5%" : "15%";
+
     return (
         <AbsoluteFill>
             {/* Top horizontal line */}
@@ -128,8 +137,8 @@ const ArchitecturalLines: React.FC = () => {
                 style={{
                     position: "absolute",
                     top: "28%",
-                    left: "10%",
-                    width: `${lineProgress * 80}%`,
+                    left: hLineStart,
+                    width: `${lineProgress * hLineWidth}%`,
                     height: 1,
                     backgroundColor: lineColor,
                     transformOrigin: "left center",
@@ -140,8 +149,8 @@ const ArchitecturalLines: React.FC = () => {
                 style={{
                     position: "absolute",
                     top: "72%",
-                    right: "10%",
-                    width: `${lineProgress * 80}%`,
+                    right: hLineStart,
+                    width: `${lineProgress * hLineWidth}%`,
                     height: 1,
                     backgroundColor: lineColor,
                     transformOrigin: "right center",
@@ -151,10 +160,10 @@ const ArchitecturalLines: React.FC = () => {
             <div
                 style={{
                     position: "absolute",
-                    left: "20%",
-                    top: "15%",
+                    left: vLineStart,
+                    top: vLineTop,
                     width: 1,
-                    height: `${lineProgress * 70}%`,
+                    height: `${lineProgress * vLineHeight}%`,
                     backgroundColor: lineColor,
                     transformOrigin: "center top",
                 }}
@@ -163,10 +172,10 @@ const ArchitecturalLines: React.FC = () => {
             <div
                 style={{
                     position: "absolute",
-                    right: "20%",
-                    bottom: "15%",
+                    right: vLineStart,
+                    bottom: vLineTop,
                     width: 1,
-                    height: `${lineProgress * 70}%`,
+                    height: `${lineProgress * vLineHeight}%`,
                     backgroundColor: lineColor,
                     transformOrigin: "center bottom",
                 }}
@@ -276,10 +285,13 @@ const LogoReveal: React.FC = () => {
 
 const Tagline: React.FC = () => {
     const frame = useCurrentFrame();
-    const { fps } = useVideoConfig();
+    const { fps, width } = useVideoConfig();
     const { taglinePaddingTop, taglineWidths } = useResponsiveScale();
+    const isMobile = width < 768;
 
-    const words = ["Arquitectura", "·", "Interiorismo", "·", "Diseño"];
+    const words = isMobile
+        ? ["Arquitectura", "Interiorismo", "Diseño"]
+        : ["Arquitectura", "·", "Interiorismo", "·", "Diseño"];
 
     return (
         <AbsoluteFill
@@ -292,6 +304,7 @@ const Tagline: React.FC = () => {
             <div
                 style={{
                     display: "flex",
+                    flexDirection: isMobile ? "column" : "row",
                     flexWrap: "wrap",
                     justifyContent: "center",
                     gap: taglineWidths.gap,
